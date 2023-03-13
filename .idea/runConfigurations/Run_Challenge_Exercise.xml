@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run Challenge Exercise" type="JetRunConfigurationType">
+    <option name="MAIN_CLASS_NAME" value="ApplicationKt" />
+    <module name="coroutines-workshop.main" />
+    <shortenClasspath name="NONE" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
