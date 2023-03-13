@@ -1,5 +1,6 @@
-<h2 style="text-align: center;">Coroutines Workshop Challenge</h2>
-<h3 style="text-align: center;">The Multiple Products Challenge</h3>
+![](https://img.shields.io/badge/Coroutines%20Workshop-Challenge-purple?style=plastic&logo=kotlin)
+
+<h2 style="text-align: center;">The Multiple Products Challenge</h2>
 
 #### Prerequisites
 >This challenge requires you to make use of **Coroutines** to solve the problem and implement the business rules. An intuitive
@@ -80,7 +81,7 @@ sequenceDiagram
     DataBridge-->>-Presenter: Return Product List Widget composed response
 ```
 
-A possible solution has been provide under the `solution` package, however, do attempt the problem before looking at the solution.
+A possible solution has been provided under the `solution` package, however, do attempt the problem before looking at the solution.
 
 There are two run configurations provided when running the project from IntelliJ Idea. 
 - Run Challenge Exercise - This run config will execute your code added in the `exercise` package
