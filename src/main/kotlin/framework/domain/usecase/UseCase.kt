@@ -3,6 +3,7 @@ package framework.domain.usecase
 import framework.domain.model.EntityResult
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.TimeoutCancellationException
 import kotlinx.coroutines.withContext
 
 /**
@@ -26,7 +27,7 @@ abstract class UseCase<REQ, RES>(
         try {
             onExecuteUseCase(request)
         } catch (exception: Exception) {
-            if (exception is CancellationException) throw exception
+            if (exception !is TimeoutCancellationException && exception is CancellationException) throw exception
             onExecutionException(data = null, exception = exception)
         }
     }

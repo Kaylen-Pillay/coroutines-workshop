@@ -7,6 +7,7 @@ import common.api.repository.RepositoryProductList
 import common.utils.Plid
 import framework.api.model.DTOResult
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.withTimeout
 
 /**
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -21,12 +22,21 @@ import kotlinx.coroutines.delay
  *
  * @author: kaylen.pillay
  **/
+
 private const val NUMBER_OF_PRODUCTS_PER_LIST = 10
+private const val TIME_TAKEN_FOR_GET_PRODUCT_LIST = 2000L
+private const val TIME_TAKEN_FOR_GET_PRODUCT_DETAIL = 1000L
+private const val TIMEOUT_FOR_GET_PRODUCT_DETAIL = 500L
+private const val SHOULD_ENABLE_TIMEOUT_FOR_PRODUCT_DETAIL = false
+private const val SHOULD_FAIL_GET_PRODUCT_LIST = false
 
 class RepositoryProductListImpl : RepositoryProductList {
 
     override suspend fun getProductList(request: DTORequestProductListGet): DTOResult<DTOResponseProductListGet> {
-        delay(2000)
+        delay(TIME_TAKEN_FOR_GET_PRODUCT_LIST)
+
+        if (SHOULD_FAIL_GET_PRODUCT_LIST) throw Exception("RepositoryProductListImpl - getProductList could not be retrieved.")
+
         val data = DTOResponseProductListGet(
             title = if (request.customerName == null) "Recommended Products" else "Products recommend for ${request.customerName}",
             plids = List(NUMBER_OF_PRODUCTS_PER_LIST) {
@@ -38,7 +48,18 @@ class RepositoryProductListImpl : RepositoryProductList {
     }
 
     override suspend fun getProductDetails(plid: Plid): DTOResult<DTOResponseProductDetailGet> {
-        delay(1000)
+        return if (SHOULD_ENABLE_TIMEOUT_FOR_PRODUCT_DETAIL) {
+            withTimeout(TIMEOUT_FOR_GET_PRODUCT_DETAIL) {
+                val randomDelay = (100..TIME_TAKEN_FOR_GET_PRODUCT_DETAIL).random()
+                performGetProductDetails(delayTime = randomDelay, plid = plid)
+            }
+        } else {
+            performGetProductDetails(delayTime = TIME_TAKEN_FOR_GET_PRODUCT_DETAIL, plid = plid)
+        }
+    }
+
+    private suspend fun performGetProductDetails(delayTime: Long, plid: Plid): DTOResult<DTOResponseProductDetailGet> {
+        delay(delayTime)
         val data = DTOResponseProductDetailGet(
             title = "Product Title for [${plid.value}]",
             subtitle = "Product Subtitle for [${plid.value}]",

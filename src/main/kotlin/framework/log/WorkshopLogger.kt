@@ -1,4 +1,4 @@
-@file:Suppress("unused")
+@file:Suppress("unused", "UnusedReceiverParameter")
 
 package framework.log
 
@@ -27,7 +27,7 @@ object WorkshopLogger {
 
     private const val TAG = "WorkshopLogger"
 
-    fun logThreadInfo(message: String) {
+    fun Any.logThreadInfo(message: String) {
         val messagePrefix = Kolor.foreground("Thread Info Log", Color.BLUE)
         val messageSuffix = Kolor.foreground("END;", Color.BLUE)
         val displayMessage = """
@@ -57,19 +57,51 @@ object WorkshopLogger {
         println(displayMessage)
     }
 
-    fun logObjectInfo(any: Any) {
+    fun Any.logObjectInfo(any: Any, message: String? = null) {
         val messagePrefix = Kolor.foreground("Object Info Log", Color.BLUE)
         val messageSuffix = Kolor.foreground("END;", Color.BLUE)
         val displayMessage = """
             ${getCurrentTimeStamp()} - $TAG : $messagePrefix
-            $any
+                ${(message ?: "Object").green()}: "$any"
             $messageSuffix
         """.trimIndent()
         println(displayMessage)
     }
 
-    private fun getCurrentTimeStamp(): String {
+    fun Any.logInfo(message: String, comparedInstant: Instant? = null, comparedMessage: String? = null): Instant {
         val instant = Clock.System.now()
+        val messagePrefix = Kolor.foreground("Info Log", Color.BLUE)
+        val messageSuffix = Kolor.foreground("END;", Color.BLUE)
+        val displayMessageWithoutCompareInstant = """
+            ${getCurrentTimeStamp(instant)} - $TAG : $messagePrefix ${"{".lightYellow()}
+                ${"Message".green()}: "$message"
+            ${"}".lightYellow()} $messageSuffix
+        """.trimIndent()
+        val displayMessageWithCompareInstant = """
+            ${getCurrentTimeStamp(instant)} - $TAG : $messagePrefix ${"{".lightYellow()}
+                ${"Message".green()}: "$message",
+                ${(comparedMessage ?: "Time Since Last Info Log").green()}: "${
+                    (instant - (comparedInstant ?: instant))
+                }"
+            ${"}".lightYellow()} $messageSuffix
+        """.trimIndent()
+        println(if (comparedInstant != null) displayMessageWithCompareInstant else displayMessageWithoutCompareInstant)
+
+        return instant
+    }
+
+    fun Exception.logException() {
+        val messagePrefix = Kolor.foreground("Info Log", Color.BLUE)
+        val messageSuffix = Kolor.foreground("END;", Color.BLUE)
+        val displayMessage = """
+            ${getCurrentTimeStamp()} - $TAG : $messagePrefix ${"{".lightYellow()}
+                ${"Exception".green()}: "$this"
+            ${"}".lightYellow()} $messageSuffix
+        """.trimIndent()
+        println(displayMessage)
+    }
+
+    fun getCurrentTimeStamp(instant: Instant = Clock.System.now()): String {
         val dateTime: LocalDateTime = instant.toLocalDateTime(TimeZone.currentSystemDefault())
 
         val prefix = "${
