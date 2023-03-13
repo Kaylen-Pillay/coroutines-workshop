@@ -1,5 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run Challenge Solution" type="JetRunConfigurationType">
+    <output_file path="$PROJECT_DIR$/logs/solution/output" is_save="true" />
     <option name="MAIN_CLASS_NAME" value="ApplicationKt" />
     <module name="coroutines-workshop.main" />
     <option name="PROGRAM_PARAMETERS" value="solution" />
