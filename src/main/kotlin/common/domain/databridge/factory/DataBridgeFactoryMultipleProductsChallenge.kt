@@ -2,7 +2,8 @@ package common.domain.databridge.factory
 
 import common.api.repository.impl.RepositoryProductListImpl
 import common.domain.databridge.DataBridgeMultipleProductsChallenge
-import common.domain.databridge.impl.DataBridgeMultipleProductsChallengeImpl
+import exercise.multipleproductschallenge.domain.databridge.impl.DataBridgeMultipleProductsChallengeImpl
+import solution.multipleproductschallenge.domain.databridge.DataBridgeMultipleProductsChallengeSolutionImpl
 
 /**
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -20,10 +21,13 @@ import common.domain.databridge.impl.DataBridgeMultipleProductsChallengeImpl
 
 object DataBridgeFactoryMultipleProductsChallenge {
 
-    fun create(): DataBridgeMultipleProductsChallenge {
-        return DataBridgeMultipleProductsChallengeImpl(
-            repository = RepositoryProductListImpl()
-        )
+    fun create(shouldRunSolution: Boolean): DataBridgeMultipleProductsChallenge {
+        val repository = RepositoryProductListImpl()
+        return if (shouldRunSolution) {
+            DataBridgeMultipleProductsChallengeSolutionImpl(repository = repository)
+        } else {
+            DataBridgeMultipleProductsChallengeImpl(repository = repository)
+        }
     }
 
 }

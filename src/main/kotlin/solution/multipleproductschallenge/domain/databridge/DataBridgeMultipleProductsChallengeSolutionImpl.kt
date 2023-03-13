@@ -1,4 +1,4 @@
-package common.domain.databridge.impl
+package solution.multipleproductschallenge.domain.databridge
 
 import common.api.repository.RepositoryProductList
 import common.domain.databridge.DataBridgeMultipleProductsChallenge
@@ -25,7 +25,7 @@ import solution.multipleproductschallenge.domain.usecase.UseCaseProductListGet
  * @author: kaylen.pillay
  **/
 
-class DataBridgeMultipleProductsChallengeImpl(
+class DataBridgeMultipleProductsChallengeSolutionImpl(
     repository: RepositoryProductList
 ) : DataBridgeMultipleProductsChallenge, DataBridge() {
 

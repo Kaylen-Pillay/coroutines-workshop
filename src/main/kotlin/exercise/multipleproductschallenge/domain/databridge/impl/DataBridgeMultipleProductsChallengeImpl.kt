@@ -1,7 +1,11 @@
-package common.presentation.factory
+package exercise.multipleproductschallenge.domain.databridge.impl
 
-import common.domain.databridge.factory.DataBridgeFactoryMultipleProductsChallenge
-import common.presentation.PresenterMultipleProductsChallenge
+import common.api.repository.RepositoryProductList
+import common.domain.databridge.DataBridgeMultipleProductsChallenge
+import common.domain.model.request.EntityRequestProductListGet
+import common.domain.model.response.EntityCombinedResponseProductListGet
+import framework.domain.databridge.DataBridge
+import framework.domain.model.EntityResult
 
 /**
  * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
@@ -17,11 +21,15 @@ import common.presentation.PresenterMultipleProductsChallenge
  * @author: kaylen.pillay
  **/
 
-object PresenterFactoryMultipleProductsChallenge {
+class DataBridgeMultipleProductsChallengeImpl(
+    repository: RepositoryProductList
+) : DataBridgeMultipleProductsChallenge, DataBridge() {
 
-    fun create(shouldRunSolution: Boolean): PresenterMultipleProductsChallenge {
-        return PresenterMultipleProductsChallenge(
-            dataBridge = DataBridgeFactoryMultipleProductsChallenge.create(shouldRunSolution = shouldRunSolution)
-        )
+    override fun getProductList(
+        request: EntityRequestProductListGet,
+        onComplete: (EntityResult<EntityCombinedResponseProductListGet>) -> Unit
+    ) {
+        TODO("getProductList requires implementation")
     }
+
 }
