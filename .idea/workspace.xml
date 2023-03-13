@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d453cf2-aba6-467f-b6ca-1e8204406f53" name="Changes" comment="# Title: Summary, imperative, start upper case, don’t end with a period&#10;# No more than 50 chars. #### 50 chars is here: #&#10;&#10;# Remember blank line between title and body.&#10;&#10;# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).&#10;# Wrap at 72 chars. ################################## which is here: #" />
+    <list default="true" id="9d453cf2-aba6-467f-b6ca-1e8204406f53" name="Changes" comment="# Title: Summary, imperative, start upper case, don’t end with a period&#10;# No more than 50 chars. #### 50 chars is here: #&#10;&#10;# Remember blank line between title and body.&#10;&#10;# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).&#10;# Wrap at 72 chars. ################################## which is here: #">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,24 +55,11 @@
       <recent name="framework.api.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Kotlin.Run Challenge Exercise">
-    <configuration name="MainKt" type="JetRunConfigurationType" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MainKt" />
-      <module name="coroutines-workshop.main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Kotlin.Run Challenge Solution">
     <list>
       <item itemvalue="Kotlin.Run Challenge Exercise" />
       <item itemvalue="Kotlin.Run Challenge Solution" />
-      <item itemvalue="Kotlin.MainKt" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Kotlin.MainKt" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -116,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678698840399</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Workspace update">
+      <created>1678699014566</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1678699014566</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -137,7 +133,8 @@
     <MESSAGE value="Coroutine Workshop&#10;&#10;1. Added exercise dataBridge with todo." />
     <MESSAGE value="Coroutine Workshop - Run Configurations&#10;&#10;1. Added run configurations for challenge" />
     <MESSAGE value="# Title: Summary, imperative, start upper case, don’t end with a period&#10;# No more than 50 chars. #### 50 chars is here: #&#10;&#10;# Remember blank line between title and body.&#10;&#10;# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).&#10;# Wrap at 72 chars. ################################## which is here: #" />
-    <option name="LAST_COMMIT_MESSAGE" value="# Title: Summary, imperative, start upper case, don’t end with a period&#10;# No more than 50 chars. #### 50 chars is here: #&#10;&#10;# Remember blank line between title and body.&#10;&#10;# Body: Explain *what* and *why* (not *how*). Include task ID (Jira issue).&#10;# Wrap at 72 chars. ################################## which is here: #" />
+    <MESSAGE value="Workspace update" />
+    <option name="LAST_COMMIT_MESSAGE" value="Workspace update" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
