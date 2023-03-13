@@ -1,6 +1,6 @@
-<h2 style="text-align: center;">Coroutines Workshop Challenge</h2>
-<h3 style="text-align: center;">The Multiple Products Challenge</h3>
-<hr />
+![](https://img.shields.io/badge/Coroutines%20Workshop-Challenge-purple?style=plastic&logo=kotlin)
+
+<h2 style="text-align: center;">The Multiple Products Challenge</h2>
 
 #### Prerequisites
 >This challenge requires you to make use of **Coroutines** to solve the problem and implement the business rules. An intuitive
@@ -48,13 +48,13 @@ The backend team has provided you with the following API Tech Spec:
 Your team has provided you with some implemented classes and defined which classes you need to implement.
 
 ##### Provided classes
-You have been provided with all the framework classes needed to make service calls. All the models have been provided.
+You have been provided with all the framework classes needed to make service calls, as well as all data models.
 
 ##### Required to implement
-- UseCase's to get the [product list](#get-product-list-endpoint) and to get the [product details](#get-product-details-endpoint) per plid. You'll need to first fetch the product list 
+- Implement UseCase's to get the [product list](#get-product-list-endpoint) and to get the [product details](#get-product-details-endpoint) per plid. You'll need to first fetch the product list 
 data from backend using the provided [repository](https://github.com/Kaylen-Pillay/coroutines-workshop/blob/main/src/main/kotlin/common/api/repository/impl/RepositoryProductListImpl.kt), thereafter you'll need to concurrently fetch the product details for 
 all plids returned from the product list response. _Hint_: You might want to implement an Interactor to perform both actions.
-- Implement the getProductList in the DataBridge.
+- Implement the getProductList function in the DataBridge.
 
 The following diagram illustrates the flow you are required to implement.
 
@@ -80,3 +80,11 @@ sequenceDiagram
     Interactor-->>-DataBridge: Return composed response
     DataBridge-->>-Presenter: Return Product List Widget composed response
 ```
+
+A possible solution has been provided under the `solution` package, however, do attempt the problem before looking at the solution.
+
+There are two run configurations provided when running the project from IntelliJ Idea. 
+- Run Challenge Exercise - This run config will execute your code added in the `exercise` package
+- Run Challenge Solution - This run config will execute the solution under the `solution` package
+
+GL HF! :dancer:
