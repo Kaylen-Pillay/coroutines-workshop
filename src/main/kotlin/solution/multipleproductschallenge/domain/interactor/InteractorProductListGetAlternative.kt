@@ -29,10 +29,13 @@ class InteractorProductListGetAlternative(
     private val useCaseProductDetailsGet: UseCaseProductDetailsGet
 ) {
     private val coroutineScope = CoroutineScope(Dispatchers.Unconfined)
+
     private val emptyFailedResponse = EntityCombinedResponseProductListGet()
+
     private val productDetailsResultList = Collections.synchronizedList(
         mutableListOf<EntityResult<EntityResponseProductDetailsGet>>()
     )
+
     fun execute(
         request: EntityRequestProductListGet,
         onComplete: (EntityResult<EntityCombinedResponseProductListGet>) -> Unit
@@ -45,6 +48,7 @@ class InteractorProductListGetAlternative(
             processProductListResult(productListResult, onComplete)
         }
     }
+
     private suspend fun processProductListResult(
         result: EntityResult<EntityResponseProductListGet>,
         onProductListResult: (EntityResult<EntityCombinedResponseProductListGet>) -> Unit
@@ -61,6 +65,7 @@ class InteractorProductListGetAlternative(
             }
         }
     }
+
     private suspend fun performProductDetailGet(
         productListResponse: EntityResponseProductListGet,
         onProductListResult: (EntityResult<EntityCombinedResponseProductListGet>) -> Unit
@@ -88,4 +93,5 @@ class InteractorProductListGetAlternative(
         )
         onProductListResult.invoke(result)
     }
+
 }
