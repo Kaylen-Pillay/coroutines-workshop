@@ -1,9 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Run Challenge Exercise" type="JetRunConfigurationType">
-    <output_file path="$PROJECT_DIR$/logs/exercise/output" is_save="true" />
+  <configuration default="false" name="Run Challenge Solution Alt" type="JetRunConfigurationType">
+    <output_file path="$PROJECT_DIR$/logs/solution/output" is_save="true" />
     <option name="MAIN_CLASS_NAME" value="ApplicationKt" />
     <module name="coroutines-workshop.main" />
-    <option name="PROGRAM_PARAMETERS" value="exercise" />
+    <option name="PROGRAM_PARAMETERS" value="solution-alt" />
     <shortenClasspath name="NONE" />
     <method v="2">
       <option name="Make" enabled="true" />

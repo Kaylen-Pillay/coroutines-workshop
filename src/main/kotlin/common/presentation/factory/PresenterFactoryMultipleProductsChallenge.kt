@@ -19,9 +19,17 @@ import common.presentation.PresenterMultipleProductsChallenge
 
 object PresenterFactoryMultipleProductsChallenge {
 
-    fun create(shouldRunSolution: Boolean): PresenterMultipleProductsChallenge {
+    fun create(
+        shouldRunSolution: Boolean,
+        shouldRunSolutionAlt: Boolean,
+        shouldRunExercise: Boolean
+    ): PresenterMultipleProductsChallenge {
         return PresenterMultipleProductsChallenge(
-            dataBridge = DataBridgeFactoryMultipleProductsChallenge.create(shouldRunSolution = shouldRunSolution)
+            dataBridge = DataBridgeFactoryMultipleProductsChallenge.create(
+                shouldRunSolution = shouldRunSolution,
+                shouldRunSolutionAlt = shouldRunSolutionAlt,
+                shouldRunExercise = shouldRunExercise
+            )
         )
     }
 }

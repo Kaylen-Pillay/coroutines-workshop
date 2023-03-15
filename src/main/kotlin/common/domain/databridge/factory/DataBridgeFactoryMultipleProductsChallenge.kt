@@ -3,6 +3,7 @@ package common.domain.databridge.factory
 import common.api.repository.impl.RepositoryProductListImpl
 import common.domain.databridge.DataBridgeMultipleProductsChallenge
 import exercise.multipleproductschallenge.domain.databridge.impl.DataBridgeMultipleProductsChallengeImpl
+import solution.multipleproductschallenge.domain.databridge.DataBridgeMultipleProductsChallengeSolutionAlternativeImpl
 import solution.multipleproductschallenge.domain.databridge.DataBridgeMultipleProductsChallengeSolutionImpl
 
 /**
@@ -21,12 +22,26 @@ import solution.multipleproductschallenge.domain.databridge.DataBridgeMultiplePr
 
 object DataBridgeFactoryMultipleProductsChallenge {
 
-    fun create(shouldRunSolution: Boolean): DataBridgeMultipleProductsChallenge {
+    fun create(
+        shouldRunSolution: Boolean,
+        shouldRunSolutionAlt: Boolean,
+        shouldRunExercise: Boolean
+    ): DataBridgeMultipleProductsChallenge {
         val repository = RepositoryProductListImpl()
-        return if (shouldRunSolution) {
-            DataBridgeMultipleProductsChallengeSolutionImpl(repository = repository)
-        } else {
-            DataBridgeMultipleProductsChallengeImpl(repository = repository)
+
+        return when {
+            shouldRunSolution -> {
+                DataBridgeMultipleProductsChallengeSolutionImpl(repository = repository)
+            }
+            shouldRunSolutionAlt -> {
+                DataBridgeMultipleProductsChallengeSolutionAlternativeImpl(repository = repository)
+            }
+            shouldRunExercise -> {
+                DataBridgeMultipleProductsChallengeImpl(repository = repository)
+            }
+            else -> {
+                DataBridgeMultipleProductsChallengeImpl(repository = repository)
+            }
         }
     }
 

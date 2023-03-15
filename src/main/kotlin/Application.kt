@@ -19,10 +19,15 @@ import java.util.concurrent.atomic.AtomicBoolean
 fun main(args: Array<String>) {
     // Used to wait for presenter to complete before terminating the main function.
     val hasCompleted = AtomicBoolean(false)
+
     val shouldRunSolution: Boolean = args.firstOrNull()?.equals("solution") ?: false
+    val shouldRunAltSolution: Boolean = args.firstOrNull()?.equals("solution-alt") ?: false
+    val shouldRunExercise: Boolean = args.firstOrNull()?.equals("exercise") ?: true
 
     val presenter = PresenterFactoryMultipleProductsChallenge.create(
-        shouldRunSolution = shouldRunSolution
+        shouldRunSolution = shouldRunSolution,
+        shouldRunSolutionAlt = shouldRunAltSolution,
+        shouldRunExercise = shouldRunExercise
     )
     val presenterCallBack = object : PresenterMultipleProductsChallenge.Callback {
         override fun onStart() {
