@@ -43,8 +43,10 @@ class InteractorProductListGetAlternative(
         val onCoroutineExceptionHandle = CoroutineExceptionHandler { _, error ->
             onComplete.invoke(EntityResult.Failure(emptyFailedResponse, error as? Exception))
         }
+
         coroutineScope.launch(onCoroutineExceptionHandle) {
             val productListResult = useCaseProductListGet.execute(request)
+
             processProductListResult(productListResult, onComplete)
         }
     }
@@ -73,24 +75,27 @@ class InteractorProductListGetAlternative(
         val jobs = productListResponse.plids.map { plid ->
             val exceptionHandler = CoroutineExceptionHandler { _, error ->
                 productDetailsResultList.add(
-                    EntityResult.Failure(
-                        EntityResponseProductDetailsGet(),
-                        error as Exception
-                    )
+                    EntityResult.Failure(EntityResponseProductDetailsGet(), error as Exception)
                 )
             }
+
             coroutineScope.launch(exceptionHandler) {
                 val result = useCaseProductDetailsGet.execute(plid)
+
                 productDetailsResultList.add(result)
             }
+
         }.toTypedArray()
+
         joinAll(*jobs)
+
         val result = EntityResult.Successful(
             data = EntityCombinedResponseProductListGet(
                 title = productListResponse.title,
                 items = productDetailsResultList
-            ).copy()
+            )
         )
+
         onProductListResult.invoke(result)
     }
 
